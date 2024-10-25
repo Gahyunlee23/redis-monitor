@@ -20,7 +20,7 @@ A Go-based monitoring system for Redis instances, designed to work with Magento 
 ## Installation
 
 ```bash
-git clone https://github.com/yourusername/redis-monitor
+git clone https://github.com/Gahyunlee23/redis-monitor.git
 cd redis-monitor
 go mod tidy
 ```
