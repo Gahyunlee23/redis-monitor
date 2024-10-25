@@ -12,7 +12,7 @@ import (
 
 func main() {
 	// redis connection info
-	cfg, err := config.LoadConfig("config/config.json")
+	cfg, err := config.LoadConfig("config/config.yaml")
 	if err != nil {
 		log.Fatal(err)
 	}
