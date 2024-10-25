@@ -6,16 +6,19 @@ import (
 	"fmt"
 	"log"
 	"redis-monitor/internal/colloector"
+	"redis-monitor/pkg/config"
 	"time"
 )
 
 func main() {
 	// redis connection info
-	redisAddr := "redis-19186.c278.us-east-1-4.ec2.redns.redis-cloud.com:19186"
-	redisPassword := "SF5vF4Rbz5nEmSQJb9W2fwUwRuFJWlUS"
+	cfg, err := config.LoadConfig("config/config.json")
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// initialize collector
-	col := colloector.NewRedisCollector(redisAddr, redisPassword)
+	col := colloector.NewRedisCollector(cfg.Server.URL, cfg.Server.Password)
 
 	// set up context
 	ctx := context.Background()
@@ -31,7 +34,7 @@ func main() {
 			log.Fatal("Failed to marshal metrics: %w", err)
 		}
 
-		fmt.Printf("\n=== Metrics Collection %d ===\n", i+1)
+		fmt.Printf("\n====== Metrics Collection %d ======\n", i+1)
 		fmt.Println(string(jsonData))
 
 		time.Sleep(1 * time.Second)

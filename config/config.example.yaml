@@ -1,0 +1,3 @@
+server:
+  url: "redis-19186.c278.us-east-1-4.ec2.redns.redis-cloud.com:19186"
+  password: "your_password"
